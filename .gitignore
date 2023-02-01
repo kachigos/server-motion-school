@@ -4,3 +4,9 @@ db.sqlite3
 .idea
 staticfiles
 ../media
+venv
+.env
+env
+.idea
+pycharm
+.db.sqlite3.icloud

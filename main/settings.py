@@ -1,20 +1,22 @@
 from pathlib import Path
 import os
-import django_heroku
+# import django_heroku
 
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-SECRET_KEY = 'django-insecure-jnrugr!v8(md8n!(ab*qvhrt4&fk#kpf50zx+id^htfc3fmv)a'
+SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = 'django-insecure-jnrugr!v8(md8n!(ab*qvhrt4&fk#kpf50zx+id^htfc3fmv)a'
 
-DEBUG = True
+DEBUG = config('DEBUG',cast=int)
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(",")
 
 
 
@@ -40,11 +42,11 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,6 +82,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# import dj_database_url
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql'
+#     }
+# }
+#
+# db = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db)
 
 # db_from_env = dj_database_url.config()
 # DATABASES['default'].update(db_from_env)
@@ -132,7 +144,24 @@ CORS_ALLOWED_ORIGINS = [
     "https://example.com",
     "https://sub.example.com",
     "http://localhost:3000",
+    'http://127.0.0.1:3000',
     "http://127.0.0.1:9000",
+]
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:3001',
+    'https://usdispatch.herokuapp.com',
+]
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
 ]
 
 
@@ -147,6 +176,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # CLOUDINARY_STORAGE
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dxpu5wqte',
@@ -164,4 +194,4 @@ cloudinary.config(
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

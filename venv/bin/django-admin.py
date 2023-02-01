@@ -1,4 +1,4 @@
-#!/Users/sinon_16/Desktop/Motion_progect/school/venv/bin/python3
+#!/Users/kachigos/Desktop/server-motion_school/venv/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

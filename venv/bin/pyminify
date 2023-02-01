@@ -1,4 +1,4 @@
-#!/Users/sinon_16/Desktop/Motion_progect/school/venv/bin/python3
+#!/Users/kachigos/Desktop/server-motion_school/venv/bin/python3
 # EASY-INSTALL-ENTRY-SCRIPT: 'django-htmlmin==0.11.0','console_scripts','pyminify'
 import re
 import sys
