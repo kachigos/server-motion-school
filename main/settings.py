@@ -76,25 +76,25 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+import dj_database_url
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql'
     }
 }
 
-# import dj_database_url
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql'
-#     }
-# }
-#
-# db = dj_database_url.config(conn_max_age=600)
-# DATABASES['default'].update(db)
+db = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db)
 
-# db_from_env = dj_database_url.config()
-# DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
