@@ -179,16 +179,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dxpu5wqte',
-    'API_KEY': '145656447552697',
-    'API_SECRET': '_bNZlfI4aI_M382Q7urxQvpaOBI'
+    'CLOUD_NAME': 'dqltraag8',
+    'API_KEY': '846372767619146',
+    'API_SECRET': 'k_mm_AMeWnQFqCwMLhvq042OCcA'
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 cloudinary.config( 
-                  cloud_name = "dxpu5wqte", 
-                  api_key = "145656447552697", 
-                  api_secret = "_bNZlfI4aI_M382Q7urxQvpaOBI", 
+                  cloud_name = "dqltraag8", 
+                  api_key = "846372767619146", 
+                  api_secret = "k_mm_AMeWnQFqCwMLhvq042OCcA", 
                   secure = True 
                   )
 
